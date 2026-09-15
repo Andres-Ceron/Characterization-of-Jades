@@ -9,7 +9,7 @@ class Image:
         self.features = self._read_features_by_path(path)
 
     def _read_features_by_path(self, path: str):
-        
+
         img = cv2.imread(path)[...,::-1]
         rows, columns, bands = img.shape
         pixel = img.size
@@ -19,14 +19,14 @@ class Image:
                     'columns': columns,
                     'bands': bands,
                     'pixels': pixel,
-                    'Name': None, # Cambiar
+                    'Name': None, # To be updated
                      'array': img,
-                     'Type': 'RGB' if bands == 3 else 'HSI' 
+                     'Type': 'RGB' if bands == 3 else 'HSI'
                     }
         return data_img
-    
+
     def RGB_Normalization(self, image_array = None ,white_limit: int = 180, std_limit: float = 5, normalization_reference: bool = True, bg_remover: bool = True ):
-        
+
         if image_array is None:
             array_data = np.copy(self.features['array'])
         else:
@@ -43,11 +43,11 @@ class Image:
 
             bg = data_array_2D[mask_white]
 
-            std_per_pixel = bg.std(axis = 1)            
+            std_per_pixel = bg.std(axis = 1)
             mask_bg = std_per_pixel <= std_limit
-            
+
             white_mean = bg[mask_bg].mean( axis = 0)
-    
+
         else:
             white_mean = np.array([255,255,255], dtype = np.uint8)
 
@@ -57,12 +57,12 @@ class Image:
             normal_array_2D = np.zeros_like(data_array_2D)
             idx = bg_mask.reshape(-1) > 0
             normal_array_2D[idx] = data_array_2D[idx]
-        
-        else: 
+
+        else:
             normal_array_2D = np.copy(array_data)
             bg_mask = None
 
         normal_array_2D = normal_array_2D/white_mean
         normal_array = np.clip(folding(normal_array_2D,rows,columns,bands),0,1)
 
-        return normal_array, white_mean,bg_mask, mask_white, mask_bg
+        return normal_array, white_mean,bg_mask

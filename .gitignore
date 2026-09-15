@@ -1,4 +1,4 @@
-# Entornos, cachés y configuración privada
+# Environments, caches, and private configuration
 .venv/
 venv/
 __pycache__/
@@ -11,11 +11,11 @@ __pycache__/
 *.key
 :memory:.ses
 .DS_Store
-# Respaldos y datos pesados
+# Backups and large data files
 *.zip
 *.raw
 *.dat
-# Documentos editoriales y compilación
+# Editorial documents and build files
 *.docx
 *.pptx
 *.aux
@@ -26,11 +26,9 @@ __pycache__/
 *.synctex.gz
 response*.tex
 response*.pdf
-# Entradas pendientes de autorización
-imgs/*
-!imgs/README.md
+# Spreadsheets (not part of the current repository)
 *.xlsx
-# Resultados regenerables; seleccionar referencias explícitamente después
+# Generated results; explicitly select reference outputs when needed
 **/informe_artifacts/
 **/resultados*/
 **/figure1_matplotlib/
