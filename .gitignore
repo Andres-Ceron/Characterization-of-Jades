@@ -1,0 +1,36 @@
+# Entornos, cachés y configuración privada
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+:memory:.ses
+.DS_Store
+# Respaldos y datos pesados
+*.zip
+*.raw
+*.dat
+# Documentos editoriales y compilación
+*.docx
+*.pptx
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+response*.tex
+response*.pdf
+# Entradas pendientes de autorización
+imgs/*
+!imgs/README.md
+*.xlsx
+# Resultados regenerables; seleccionar referencias explícitamente después
+**/informe_artifacts/
+**/resultados*/
+**/figure1_matplotlib/

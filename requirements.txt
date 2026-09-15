@@ -1,0 +1,10 @@
+numpy
+rembg[cpu]
+opencv-python
+scipy
+pandas
+matplotlib
+scikit-learn
+onnxruntime
+openpyxl
+jupyterlab
