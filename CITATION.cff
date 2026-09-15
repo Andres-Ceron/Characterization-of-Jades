@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+
+title: "Jade Color Analysis"
+version: 1.0.0
+type: software
+date-released: 2026-09-15
+
+authors:
+  - family-names: "Cerón-Molina"
+    given-names: "A.F."
+  - family-names: "Espinel-Cipagauta"
+    given-names: "V."
+
+repository-code: "https://github.com/Andres-Ceron/Characterization-of-Jades"
+
+# Optional: add this section later when the associated article is published
+# and has a DOI.
+#
+# preferred-citation:
+#   type: article
+#   authors:
+#     - family-names: "Cerón-Molina"
+#       given-names: "Andrés F."
+#     - family-names: "APELLIDO"
+#       given-names: "NOMBRE"
+#   title: "TÍTULO DEL ARTÍCULO"
+#   journal: "NOMBRE DE LA REVISTA"
+#   year: 2026
+#   doi: "10.xxxx/xxxxx"
