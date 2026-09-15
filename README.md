@@ -25,9 +25,6 @@ python -m pip install -r requirements.txt
 python -m jupyterlab
 ```
 
-On Windows, activate the environment with `.venv\Scripts\activate` instead.
-
-The dependency file does not pin versions. Record your Python and package versions when reporting results. Background removal uses `rembg`; its first run may download model weights and require internet access.
 
 ## Running the notebooks
 
@@ -48,9 +45,9 @@ The statistics table contains sample, group, channel, mean, standard deviation, 
 
 ### Cluster-count selection
 
-`k-selection.ipynb` samples at most 100,000 foreground pixels without replacement, using seed 0. It fits K-means for k=1 through 10 with `n_init=10` and `random_state=0`, then plots inertia and its percentage reduction.
+`k-selection.ipynb` samples at most 100,000 foreground pixels without replacement, using seed 0. It fits K-means for k=1 through 10 with `n_init=10` and `random_state=0`, then plots inertia and mean Silhouette scores side by side.
 
-The suggested elbow maximizes the distance from the normalized inertia curve to the line joining its endpoints. This notebook does not compute Silhouette scores. Its suggested k does not automatically change the segmentation notebook's three-cluster setting.
+The suggested elbow maximizes the distance from the normalized inertia curve to the line joining its endpoints. Silhouette scores use Euclidean distances in CIELAB on a fixed random subset of at most 5,000 pixels from the K-means input (seed 0). The same subset is used for every k, with labels from each fitted model. Scores are estimates for that subset; k=1 is excluded because Silhouette requires at least two clusters. Undefined scores are left as NaN. The right-hand plot marks the k with the highest valid score. Its suggested k does not automatically change the segmentation notebook's three-cluster setting.
 
 ## White-reference normalization
 
@@ -58,11 +55,7 @@ The current implementation selects candidate white pixels whose mean RGB intensi
 
 ## Images
 
-The repository includes `imgs/M1.jpg`, `M2.jpg`, `M3.jpg`, and `M4.jpg`, which are the inputs used by the notebooks. Keep their filenames unchanged unless you also update the corresponding input paths. Additional acquisition and sample-provenance information is not supplied in this README.
-
-## Reproducibility
-
-Notebook outputs are cleared so that plots and tables are generated in the current environment. The English-language update preserves numerical operations, parameters, and control flow; table column names and display labels are in English. Numerical results have not been recomputed as part of this update. Runtime and memory requirements depend on image size and foreground pixel count.
+The repository includes `imgs/M1.jpg`, `M2.jpg`, `M3.jpg`, and `M4.jpg`, which are the inputs used by the notebooks. Keep their filenames unchanged unless you also update the corresponding input paths.
 
 ## License
 
